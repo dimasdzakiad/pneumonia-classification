@@ -114,7 +114,3 @@ Tautan ini akan membawa Anda ke aplikasi Streamlit yang memungkinkan Anda untuk 
 ---
 
 Terima kasih telah menggunakan aplikasi ini! Kami berharap aplikasi ini dapat membantu dalam analisis gambar X-Ray untuk mendeteksi pneumonia dan COVID-19 dengan lebih efisien dan akurat.
-
----
-
-Dengan penjelasan ini, Anda dapat memberikan gambaran lengkap mengenai aplikasi dan cara menjalankannya. Pastikan untuk mengganti link live demo dengan URL yang valid setelah aplikasi di-deploy.
