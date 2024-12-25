@@ -107,7 +107,7 @@ Kedua model ini dilatih menggunakan dataset gambar X-Ray dada untuk mendeteksi p
 ## Link Live Demo
 
 Aplikasi web yang telah di-deploy dapat diakses melalui tautan berikut:
-[https://example-link-to-deployed-app.com](https:......)
+[https://example-link-to-deployed-app.com]
 
 Tautan ini akan membawa Anda ke aplikasi Streamlit yang memungkinkan Anda untuk meng-upload gambar X-Ray dan menerima hasil klasifikasi yang cepat dan akurat, lengkap dengan visualisasi **Grad-CAM**.
 
