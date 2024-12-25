@@ -1,7 +1,3 @@
-Berikut adalah penjelasan lengkap mengenai proyek, langkah instalasi, model yang digunakan, hasil dan analisis, serta link live demo yang dapat dimasukkan dalam file `README.md`:
-
----
-
 ## Deskripsi Proyek
 
 Proyek ini bertujuan untuk mengembangkan aplikasi web berbasis **Streamlit** yang memungkinkan pengguna untuk mengklasifikasikan gambar X-Ray dada dan mendeteksi jenis-jenis pneumonia serta COVID-19. Aplikasi ini memanfaatkan dua model deep learning yang telah dilatih sebelumnya, yaitu **ResNet50V2** dan **VGG16**, yang digunakan untuk menganalisis gambar X-Ray dan memberikan diagnosis yang akurat berdasarkan kondisi yang terdeteksi pada gambar.
