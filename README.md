@@ -27,8 +27,8 @@ Pastikan sistem Anda telah terinstal **Python 3.7** atau versi yang lebih baru.
 ### 2. Instalasi Dependencies
 1. **Clone repository**:
    ```bash
-   git clone https://github.com/username/pneumonia-xray-classifier.git
-   cd pneumonia-xray-classifier
+   git clone https://github.com/dimasdzakiad/pneumonia-classification.git
+   cd pneumonia-classification
    ```
 
 2. **Buat dan aktifkan environment virtual** (opsional, tapi disarankan):
@@ -46,7 +46,7 @@ Pastikan sistem Anda telah terinstal **Python 3.7** atau versi yang lebih baru.
 4. **Menjalankan aplikasi**:
    Setelah semua dependencies terinstal, jalankan aplikasi dengan perintah berikut:
    ```bash
-   streamlit run app.py
+   streamlit run pneumonia-classification.py
    ```
    Aplikasi akan berjalan pada [http://localhost:8501](http://localhost:8501).
 
@@ -111,7 +111,7 @@ Kedua model ini dilatih menggunakan dataset gambar X-Ray dada untuk mendeteksi p
 ## Link Live Demo
 
 Aplikasi web yang telah di-deploy dapat diakses melalui tautan berikut:
-[https://example-link-to-deployed-app.com](https://example-link-to-deployed-app.com)
+[https://example-link-to-deployed-app.com](https:......)
 
 Tautan ini akan membawa Anda ke aplikasi Streamlit yang memungkinkan Anda untuk meng-upload gambar X-Ray dan menerima hasil klasifikasi yang cepat dan akurat, lengkap dengan visualisasi **Grad-CAM**.
 
