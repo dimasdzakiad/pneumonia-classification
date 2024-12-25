@@ -1,95 +1,124 @@
-```markdown
-# Pneumonia X-Ray Classification
+Berikut adalah penjelasan lengkap mengenai proyek, langkah instalasi, model yang digunakan, hasil dan analisis, serta link live demo yang dapat dimasukkan dalam file `README.md`:
+
+---
 
 ## Deskripsi Proyek
-Proyek ini bertujuan untuk mengembangkan aplikasi web berbasis **Streamlit** yang dapat mengklasifikasikan gambar X-Ray dada dan mendeteksi penyakit pneumonia, termasuk jenis pneumonia bakterial, pneumonia viral, dan COVID-19. Aplikasi ini menggunakan dua model deep learning, yaitu **ResNet50V2** dan **VGG16**, yang telah di-fine-tune untuk mengklasifikasikan gambar X-Ray.
 
-Tujuan pengembangan aplikasi ini adalah untuk memberikan alat bantu untuk analisis cepat dan visualisasi hasil diagnosis dengan menggunakan teknologi **Grad-CAM** untuk menyoroti area yang relevan pada gambar X-Ray yang dianggap penting oleh model dalam proses klasifikasi.
+Proyek ini bertujuan untuk mengembangkan aplikasi web berbasis **Streamlit** yang memungkinkan pengguna untuk mengklasifikasikan gambar X-Ray dada dan mendeteksi jenis-jenis pneumonia serta COVID-19. Aplikasi ini memanfaatkan dua model deep learning yang telah dilatih sebelumnya, yaitu **ResNet50V2** dan **VGG16**, yang digunakan untuk menganalisis gambar X-Ray dan memberikan diagnosis yang akurat berdasarkan kondisi yang terdeteksi pada gambar.
+
+### Latar Belakang
+Pneumonia dan COVID-19 merupakan penyakit pernapasan yang dapat didiagnosis melalui pemeriksaan X-Ray dada. Penggunaan model deep learning seperti **ResNet50V2** dan **VGG16** memungkinkan untuk menganalisis gambar X-Ray dengan lebih cepat dan efisien, sehingga membantu tenaga medis dalam memberikan diagnosis yang lebih tepat dan lebih cepat.
+
+### Tujuan Pengembangan
+Aplikasi ini bertujuan untuk:
+- Mengklasifikasikan gambar X-Ray dada menjadi empat kategori: **Normal**, **Pneumonia-Bacterial**, **Pneumonia-Viral**, dan **COVID-19**.
+- Menyediakan hasil klasifikasi beserta analisis menggunakan visualisasi **Grad-CAM**, yang menunjukkan area gambar X-Ray yang dianggap penting oleh model dalam membuat keputusan klasifikasi.
+- Memberikan akses mudah bagi pengguna untuk meng-upload gambar X-Ray dan mendapatkan diagnosis dengan cepat.
+
+---
 
 ## Langkah Instalasi
 
+Untuk menjalankan aplikasi web ini, berikut adalah langkah-langkah yang perlu dilakukan:
+
 ### 1. Persyaratan Sistem
-Pastikan Anda memiliki **Python 3.7+** yang terinstal pada sistem Anda.
+Pastikan sistem Anda telah terinstal **Python 3.7** atau versi yang lebih baru.
 
 ### 2. Instalasi Dependencies
-Untuk menginstal semua dependencies yang diperlukan, Anda dapat menggunakan `pip`. Ikuti langkah-langkah berikut:
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/username/pneumonia-xray-classifier.git
+   cd pneumonia-xray-classifier
+   ```
 
-1. Clone repository ini:
-    ```bash
-    git clone https://github.com/username/pneumonia-xray-classifier.git
-    cd pneumonia-xray-classifier
-    ```
+2. **Buat dan aktifkan environment virtual** (opsional, tapi disarankan):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Untuk Windows gunakan venv\Scripts\activate
+   ```
 
-2. Buat dan aktifkan environment virtual (opsional, tetapi disarankan):
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Untuk pengguna Windows, gunakan venv\Scripts\activate
-    ```
+3. **Instal dependencies**:
+   Install semua dependencies yang diperlukan dengan menjalankan:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-3. Instal dependencies yang diperlukan:
-    ```bash
-    pip install -r requirements.txt
-    ```
+4. **Menjalankan aplikasi**:
+   Setelah semua dependencies terinstal, jalankan aplikasi dengan perintah berikut:
+   ```bash
+   streamlit run app.py
+   ```
+   Aplikasi akan berjalan pada [http://localhost:8501](http://localhost:8501).
 
-### 3. Menjalankan Aplikasi
-Setelah semua dependencies terinstal, Anda bisa menjalankan aplikasi dengan perintah berikut:
-```bash
-streamlit run app.py
-```
-
-Aplikasi akan berjalan pada [http://localhost:8501](http://localhost:8501).
+---
 
 ## Deskripsi Model
-Model yang digunakan dalam aplikasi ini adalah **ResNet50V2** dan **VGG16**, yang merupakan dua arsitektur deep learning terkenal dalam tugas klasifikasi gambar.
+
+Proyek ini menggunakan dua model deep learning, yaitu **ResNet50V2** dan **VGG16**, yang telah dioptimalkan untuk tugas klasifikasi gambar X-Ray.
 
 ### **ResNet50V2**
-Model ini menggunakan **ResNet50V2**, sebuah convolutional neural network (CNN) yang dilatih untuk mengklasifikasikan gambar X-Ray ke dalam empat kategori: Normal, Pneumonia-Bacterial, Pneumonia-Viral, dan COVID-19. Model ini menggunakan residual connections yang membantu dalam pelatihan jaringan yang lebih dalam.
+ResNet50V2 adalah model Convolutional Neural Network (CNN) yang memiliki keunggulan dalam mengatasi masalah degradasi pada jaringan yang sangat dalam, berkat **residual connections**. Model ini sangat baik dalam mengidentifikasi pola-pola penting pada gambar X-Ray untuk membedakan antara kategori-kategori seperti **Normal**, **Pneumonia-Bacterial**, **Pneumonia-Viral**, dan **COVID-19**.
+
+**Performanya**:
+- **Akurasinya** mencapai **84%**.
+- Menggunakan **F1-score**, **precision**, dan **recall** sebagai metrik utama evaluasi.
+- Performa terbaik ditemukan pada kategori **Normal** dan **COVID-19**, tetapi memiliki performa yang lebih rendah pada kategori **Pneumonia-Viral**.
 
 ### **VGG16**
-Model kedua adalah **VGG16**, arsitektur CNN yang lebih sederhana dibandingkan ResNet, tetapi tetap efektif dalam banyak tugas klasifikasi gambar. VGG16 menggunakan lapisan konvolusi yang lebih kecil dan lebih banyak lapisan dibandingkan model lainnya.
+VGG16 adalah model CNN yang lebih sederhana dibandingkan ResNet50V2, namun masih efektif dalam tugas klasifikasi gambar. VGG16 menggunakan lebih banyak lapisan konvolusi dengan ukuran filter yang lebih kecil dan lebih banyak lapisan dalam arsitekturnya. 
 
-Kedua model ini dilatih dengan dataset X-Ray dada yang mencakup gambar dari pasien dengan kondisi berbeda. Setiap model dilatih untuk mengenali pola yang dapat membedakan kondisi tersebut.
+**Performanya**:
+- **Akurasinya** mencapai **83%**.
+- VGG16 juga menampilkan hasil yang baik pada kategori **Normal** dan **COVID-19**, tetapi memiliki performa lebih rendah pada **Pneumonia-Viral** dibandingkan dengan ResNet50V2.
+
+Kedua model ini dilatih menggunakan dataset gambar X-Ray dada untuk mendeteksi penyakit pneumonia dan COVID-19, serta untuk mempelajari pola-pola visual yang membedakan setiap kategori.
+
+---
 
 ## Hasil dan Analisis
 
 ### Hasil Evaluasi Model
 
-#### **ResNet50V2**
-Berikut adalah hasil klasifikasi dari model ResNet50V2:
+#### **Hasil Evaluasi Model ResNet50V2**:
+- **Precision, Recall, dan F1-Score** untuk setiap kelas adalah sebagai berikut:
 
-| Metrik              | Normal | Pneumonia-Bacterial | Pneumonia-Viral | COVID-19 |
-|---------------------|--------|---------------------|-----------------|----------|
-| **Precision**       | 0.90   | 0.77                | 0.65            | 0.98     |
-| **Recall**          | 0.99   | 0.82                | 0.46            | 0.96     |
-| **F1-Score**        | 0.94   | 0.80                | 0.54            | 0.97     |
-| **Accuracy**        | 0.84   |                     |                 |          |
-| **Macro Avg**       | 0.83   | 0.81                | 0.81            |          |
-| **Weighted Avg**    | 0.82   | 0.84                | 0.83            |          |
+| Metrik             | Normal | Pneumonia-Bacterial | Pneumonia-Viral | COVID-19 |
+|--------------------|--------|---------------------|-----------------|----------|
+| **Precision**      | 0.90   | 0.77                | 0.65            | 0.98     |
+| **Recall**         | 0.99   | 0.82                | 0.46            | 0.96     |
+| **F1-Score**       | 0.94   | 0.80                | 0.54            | 0.97     |
+| **Accuracy**       | 0.84   |                     |                 |          |
 
-#### **VGG16**
-Berikut adalah hasil klasifikasi dari model VGG16:
+#### **Hasil Evaluasi Model VGG16**:
+- **Precision, Recall, dan F1-Score** untuk setiap kelas adalah sebagai berikut:
 
-| Metrik              | Normal | Pneumonia-Bacterial | Pneumonia-Viral | COVID-19 |
-|---------------------|--------|---------------------|-----------------|----------|
-| **Precision**       | 0.89   | 0.76                | 0.65            | 0.98     |
-| **Recall**          | 0.99   | 0.82                | 0.42            | 0.96     |
-| **F1-Score**        | 0.94   | 0.79                | 0.51            | 0.97     |
-| **Accuracy**        | 0.83   |                     |                 |          |
-| **Macro Avg**       | 0.82   | 0.80                | 0.80            |          |
-| **Weighted Avg**    | 0.82   | 0.83                | 0.82            |          |
+| Metrik             | Normal | Pneumonia-Bacterial | Pneumonia-Viral | COVID-19 |
+|--------------------|--------|---------------------|-----------------|----------|
+| **Precision**      | 0.89   | 0.76                | 0.65            | 0.98     |
+| **Recall**         | 0.99   | 0.82                | 0.42            | 0.96     |
+| **F1-Score**       | 0.94   | 0.79                | 0.51            | 0.97     |
+| **Accuracy**       | 0.83   |                     |                 |          |
 
-### Analisis Perbandingan
-Kedua model, **ResNet50V2** dan **VGG16**, menunjukkan performa yang baik dengan akurasi masing-masing **84%** dan **83%**. ResNet50V2 sedikit lebih unggul dalam hal akurasi dan F1-score, terutama dalam mengklasifikasikan gambar **Pneumonia-Viral**. VGG16 menunjukkan sedikit kelemahan dalam pengklasifikasian gambar **Pneumonia-Viral**, yang berhubungan dengan recall yang lebih rendah pada kategori tersebut.
+### **Perbandingan Performansi Model**
+- **ResNet50V2** memberikan hasil yang sedikit lebih baik dibandingkan **VGG16**, terutama dalam hal **Pneumonia-Viral**, di mana ResNet memiliki recall yang lebih tinggi.
+- Secara keseluruhan, **ResNet50V2** menghasilkan akurasi 84%, sedangkan **VGG16** menghasilkan akurasi 83%.
 
-### Visualisasi Grad-CAM
-Untuk meningkatkan interpretabilitas, aplikasi ini juga menggunakan **Grad-CAM** untuk menyoroti area gambar X-Ray yang relevan dalam klasifikasi. Area yang lebih terang menunjukkan pentingnya bagi model dalam membuat keputusan klasifikasi.
-
-## Link Live Demo
-Anda dapat mengakses aplikasi web yang telah di-deploy di [tautan ini](https://example-link-to-deployed-app.com). Aplikasi ini memungkinkan pengguna untuk meng-upload gambar X-Ray dan mendapatkan analisis diagnosis serta visualisasi hasilnya.
+### **Visualisasi Grad-CAM**
+- Aplikasi ini juga dilengkapi dengan visualisasi **Grad-CAM**, yang menyoroti area pada gambar X-Ray yang dianggap penting oleh model dalam membuat keputusan. Hal ini membantu dalam interpretasi hasil klasifikasi dan memberikan wawasan tentang bagaimana model bekerja.
 
 ---
 
-Terima kasih telah menggunakan aplikasi ini! Kami berharap aplikasi ini dapat memberikan bantuan dalam analisis gambar X-Ray untuk mendeteksi pneumonia dan COVID-19.
-```
+## Link Live Demo
 
-Jangan lupa untuk mengganti `https://example-link-to-deployed-app.com` dengan URL aktual aplikasi yang telah di-deploy.
+Aplikasi web yang telah di-deploy dapat diakses melalui tautan berikut:
+[https://example-link-to-deployed-app.com](https://example-link-to-deployed-app.com)
+
+Tautan ini akan membawa Anda ke aplikasi Streamlit yang memungkinkan Anda untuk meng-upload gambar X-Ray dan menerima hasil klasifikasi yang cepat dan akurat, lengkap dengan visualisasi **Grad-CAM**.
+
+---
+
+Terima kasih telah menggunakan aplikasi ini! Kami berharap aplikasi ini dapat membantu dalam analisis gambar X-Ray untuk mendeteksi pneumonia dan COVID-19 dengan lebih efisien dan akurat.
+
+---
+
+Dengan penjelasan ini, Anda dapat memberikan gambaran lengkap mengenai aplikasi dan cara menjalankannya. Pastikan untuk mengganti link live demo dengan URL yang valid setelah aplikasi di-deploy.
